@@ -3,6 +3,7 @@ import { TankSimulation, SimulationMetrics } from './components/TankSimulation';
 import { ControlPanel } from './components/ControlPanel';
 import { MetricsPanel } from './components/MetricsPanel';
 import { ValidationChart } from './components/ValidationChart';
+import { EconomicImpactPanel } from './components/EconomicImpactPanel';
 import { Beaker, Info, ShieldCheck, Zap } from 'lucide-react';
 
 export default function App() {
@@ -83,7 +84,12 @@ export default function App() {
               />
             </div>
 
-            <ValidationChart homogeneity={metrics.homogeneity} />
+            <ValidationChart 
+              homogeneity={metrics.homogeneity}
+              temperature={temperature}
+              concentration={concentration}
+              bitumenGrade={bitumenGrade}
+            />
 
             <div className="p-6 bg-zinc-900/50 border border-zinc-800 rounded-xl">
               <div className="flex items-start gap-4">
@@ -114,28 +120,13 @@ export default function App() {
               onReset={handleReset}
             />
 
-            <div className="p-6 bg-orange-500/5 border border-orange-500/20 rounded-xl space-y-4">
-              <h3 className="text-xs font-bold text-orange-500 uppercase tracking-widest">Economic Impact</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-[10px] text-zinc-500 uppercase">Fuel Savings Est.</span>
-                  <span className="text-sm font-mono font-bold text-zinc-100">15-20%</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[10px] text-zinc-500 uppercase">Machinery Wear Reduc.</span>
-                  <span className="text-sm font-mono font-bold text-zinc-100">12%</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[10px] text-zinc-500 uppercase">Road Lifespan Ext.</span>
-                  <span className="text-sm font-mono font-bold text-zinc-100">+5 Years</span>
-                </div>
-              </div>
-              <div className="pt-4 border-t border-orange-500/10">
-                <p className="text-[10px] text-zinc-500 italic">
-                  "Breaking the paywall by moving heavy engineering simulations into the browser."
-                </p>
-              </div>
-            </div>
+            <EconomicImpactPanel
+              temperature={temperature}
+              rpm={rpm}
+              concentration={concentration}
+              deadZonePercentage={metrics.deadZonePercentage}
+              homogeneity={metrics.homogeneity}
+            />
           </div>
 
         </div>
