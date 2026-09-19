@@ -1,0 +1,5 @@
+{
+  "name": "CFD Of Polymer-Modified-Bitumen",
+  "description": "A real-time Computational Fluid Dynamics (CFD) tool for optimizing the digestion of crumb rubber in bitumen mixing tanks for road construction.",
+  "requestFramePermissions": []
+}
